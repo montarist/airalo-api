@@ -24,9 +24,11 @@ export interface AiraloOrder {
 }
 
 export interface AiraloOrderCreateParams {
-	package_id: number;
+	package_id: string;
 	quantity: number;
+	type: 'sim';
 	description?: string;
+	brand_settings_name?: string;
 	webhook_url?: string;
 }
 
@@ -35,9 +37,9 @@ export interface AiraloOrderAsyncParams extends AiraloOrderCreateParams {
 }
 
 export interface AiraloTopupOrderParams {
-	sim_iccid: string;
+	iccid: string;
 	package_id: number;
-	webhook_url?: string;
+	description?: string;
 }
 
 export interface AiraloOrderStatusResponse {
