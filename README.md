@@ -4,6 +4,14 @@ An unofficial Airalo API integration for JavaScript/TypeScript.
 
 [![Airalo API Pipeline](https://github.com/montarist/airalo-api/actions/workflows/pipeline.yml/badge.svg)](https://github.com/montarist/airalo-api/actions/workflows/pipeline.yml)
 
+## Important Notice
+
+This package is fully licensed under the MIT License and is created to assist developers in integrating Airalo for eSIM orders. While this package aims to simplify integration, the usage of this package comes with no warranty or liability.
+
+This project is created without any commercial intent and solely to contribute to the developer community.
+
+For any issues encountered, feel free to reach out. You can also support the project by forking and contributing. Together, we can make this library even better!
+
 ## Installation
 
 ```bash
