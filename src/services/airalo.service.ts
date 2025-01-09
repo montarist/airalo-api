@@ -160,7 +160,7 @@ export class AiraloService {
             this.axiosInstance.get('/v2/orders', {
                 headers,
                 params: {
-                    include: params.include,
+                    include: params.include || 'sims,user,status',
                     'filter[created_at]': params.createdAt,
                     'filter[order_status]': params.orderStatus,
                     'filter[description]': params.description,
@@ -177,7 +177,7 @@ export class AiraloService {
      * @param {string} [include] - Related resources to include in the response
      * @returns {Promise<AiraloOrder>} The requested order
      */
-    async getOrder(orderId: number, include?: string): Promise<AiraloOrder> {
+    async getOrder(orderId: number, include: string = 'sims,user,status'): Promise<AiraloOrder> {
         const headers = await this.getHeaders();
         return this.handleRequest(() =>
             this.axiosInstance.get(`/v2/orders/${orderId}`, {
