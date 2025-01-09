@@ -1,6 +1,6 @@
 {
 	"name": "@montarist/airalo-api",
-	"version": "1.0.2",
+	"version": "1.0.3",
 	"description": "An unofficial Airalo eSIM services integration for JavaScript/TypeScript",
 	"main": "dist/index.js",
 	"types": "dist/index.d.ts",
