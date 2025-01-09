@@ -10,7 +10,7 @@ This package is fully licensed under the MIT License and is created to assist de
 
 This project is created without any commercial intent and solely to contribute to the developer community.
 
-For any issues encountered, feel free to reach out. You can also support the project by forking and contributing. Together, we can make this library even better!
+For any issues encountered, feel free to reach out. You can also support the project by forking and contributing. Together, we can makeasd this library even better!
 
 ## Installation
 
