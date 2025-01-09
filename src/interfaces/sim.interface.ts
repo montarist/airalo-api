@@ -30,10 +30,7 @@ export interface AiraloSIMUsage {
 }
 
 export interface AiraloSIMBrand {
-	name: string;
-	logo_url: string;
-	primary_color: string;
-	secondary_color: string;
+	brand_settings_name?: string;
 }
 
 export interface AiraloSIMInstructions {

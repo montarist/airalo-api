@@ -194,7 +194,33 @@ export class AiraloService {
      */
     async createOrder(orderData: AiraloOrderCreateParams): Promise<AiraloOrder> {
         const headers = await this.getHeaders();
-        return this.handleRequest(() => this.axiosInstance.post('/v2/orders', orderData, { headers }));
+        const formData = new FormData();
+
+        // Append all order data to FormData
+        formData.append('quantity', orderData.quantity.toString());
+        formData.append('package_id', orderData.package_id);
+        formData.append('type', orderData.type);
+
+        if (orderData.description) {
+            formData.append('description', orderData.description);
+        }
+
+        if (orderData.brand_settings_name) {
+            formData.append('brand_settings_name', orderData.brand_settings_name);
+        }
+
+        if (orderData.webhook_url) {
+            formData.append('webhook_url', orderData.webhook_url);
+        }
+
+        return this.handleRequest(() =>
+            this.axiosInstance.post('/v2/orders', formData, {
+                headers: {
+                    ...headers,
+                    'Content-Type': 'multipart/form-data'
+                }
+            })
+        );
     }
 
     /**
@@ -204,7 +230,37 @@ export class AiraloService {
      */
     async createAsyncOrder(orderData: AiraloOrderAsyncParams): Promise<{ request_id: string }> {
         const headers = await this.getHeaders();
-        return this.handleRequest(() => this.axiosInstance.post('/v2/orders-async', orderData, { headers }));
+        const formData = new FormData();
+
+        // Append all order data to FormData
+        formData.append('quantity', orderData.quantity.toString());
+        formData.append('package_id', orderData.package_id);
+        formData.append('type', orderData.type);
+
+        if (orderData.description) {
+            formData.append('description', orderData.description);
+        }
+
+        if (orderData.brand_settings_name) {
+            formData.append('brand_settings_name', orderData.brand_settings_name);
+        }
+
+        if (orderData.webhook_url) {
+            formData.append('webhook_url', orderData.webhook_url);
+        }
+
+        if (orderData.callback_url) {
+            formData.append('callback_url', orderData.callback_url);
+        }
+
+        return this.handleRequest(() =>
+            this.axiosInstance.post('/v2/orders-async', formData, {
+                headers: {
+                    ...headers,
+                    'Content-Type': 'multipart/form-data'
+                }
+            })
+        );
     }
 
     /**
@@ -214,7 +270,25 @@ export class AiraloService {
      */
     async createTopupOrder(orderData: AiraloTopupOrderParams): Promise<AiraloOrder> {
         const headers = await this.getHeaders();
-        return this.handleRequest(() => this.axiosInstance.post('/v2/orders/topups', orderData, { headers }));
+        const formData = new FormData();
+
+
+        // Append all order data to FormData
+        formData.append('iccid', orderData.iccid);
+        formData.append('package_id', orderData.package_id.toString());
+
+        if (orderData.description) {
+            formData.append('description', orderData.description);
+        }
+
+        return this.handleRequest(() =>
+            this.axiosInstance.post('/v2/orders/topups', formData, {
+                headers: {
+                    ...headers,
+                    'Content-Type': 'multipart/form-data'
+                }
+            })
+        );
     }
 
     /**
@@ -285,6 +359,30 @@ export class AiraloService {
     async getSIMBrand(iccid: string): Promise<AiraloSIMBrand> {
         const headers = await this.getHeaders();
         return this.handleRequest(() => this.axiosInstance.get(`/v2/sims/${iccid}/brand`, { headers }));
+    }
+
+    /**
+     * Retrieves brand information for a specific SIM
+     * @param {string} iccid - The ICCID of the SIM
+     * @returns {Promise<AiraloSIMBrand>} Brand information for the SIM
+     */
+    async updateSIMBrand(iccid: string, brand_settings_name?: string): Promise<AiraloSIMBrand> {
+        const headers = await this.getHeaders();
+        const formData = new FormData();
+
+        // Append all order data to FormData
+        if (brand_settings_name) {
+            formData.append('brand_settings_name', brand_settings_name);
+        }
+
+        return this.handleRequest(() =>
+            this.axiosInstance.put(`/v2/sims/${iccid}/brand`, formData, {
+                headers: {
+                    ...headers,
+                    'Content-Type': 'multipart/form-data'
+                }
+            })
+        );
     }
 
     /**

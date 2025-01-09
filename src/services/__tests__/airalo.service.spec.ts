@@ -148,8 +148,9 @@ describe('AiraloService', () => {
 
         it('should create order', async () => {
             const orderData = {
-                package_id: 1,
+                package_id: 'kallur-digital-7days-1gb',
                 quantity: 1,
+                type: 'sim' as const,
                 description: 'Test order',
             };
 
@@ -164,8 +165,9 @@ describe('AiraloService', () => {
             mockAxiosInstance.post.mockResolvedValueOnce({ data: mockResponse });
 
             const orderData = {
-                package_id: 1,
+                package_id: 'kallur-digital-7days-1gb',
                 quantity: 1,
+                type: 'sim' as const,
                 callback_url: 'https://test.com/callback',
             };
 
