@@ -6,7 +6,7 @@ export interface AiraloPackage {
 	validity_period: number;
 	price: number;
 	currency: string;
-	type: 'global' | 'local';
+	type: 'global' | 'local' | 'regional';
 	region?: string;
 	country?: string;
 	operator?: string;
@@ -15,7 +15,7 @@ export interface AiraloPackage {
 }
 
 export interface AiraloPackageListParams {
-	type?: 'global' | 'local';
+	type?: 'global' | 'local' | 'regional';
 	country?: string;
 	limit?: number;
 	page?: number;

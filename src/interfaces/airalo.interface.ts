@@ -388,7 +388,7 @@ export interface AiraloPackage {
     /** Currency code */
     currency: string;
     /** Package type */
-    type: 'global' | 'local';
+    type: 'global' | 'local' | 'regional';
     /** Region name */
     region?: string;
     /** Country code */
@@ -407,7 +407,7 @@ export interface AiraloPackage {
  */
 export interface AiraloPackageListParams {
     /** Filter by package type */
-    type?: 'global' | 'local';
+    type?: 'global' | 'local' | 'regional';
     /** Filter by country */
     country?: string;
     /** Number of items per page */
